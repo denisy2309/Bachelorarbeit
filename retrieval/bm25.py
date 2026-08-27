@@ -6,7 +6,7 @@ class BM25Retriever:
         self.bm25 = BM25Okapi(tokenized)
         self.corpus = corpus
 
-    def search(self, query, k=3):
+    def search(self, query, k=50):
         tokenized_query = query.split()
         scores = self.bm25.get_scores(tokenized_query)
         ranked = sorted(enumerate(scores), key=lambda x: x[1], reverse=True)

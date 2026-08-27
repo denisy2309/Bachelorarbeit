@@ -1,4 +1,3 @@
-from models.embedding import EmbeddingModel
 from models.generator import Generator
 from evaluation.rouge_eval import compute_rouge
 
@@ -9,88 +8,188 @@ from retrieval.hybrid import rrf
 from utils.cache import save_json, load_json
 
 
-def run_slm_llm_experiment(documents, queries, best_retrieval="hybrid"):
+def run_slm_llm_experiment(fine_model, documents, queries, retrieval_method):
     CACHE_PATH = "results/llm_cache.json"
 
-    cache = load_json(CACHE_PATH)
-    if cache is None:
-        cache = {}
+    cache_answers = load_json(CACHE_PATH)
+    if cache_answers is None:
+        cache_answers = {}
 
-    # Embeddings
-    # Pre-trained
-    embedder = EmbeddingModel()
-    doc_embeddings_pre = embedder.encode(documents)
-    
-    # Retriever
-    dense = DenseRetriever(doc_embeddings_pre)
+    doc_embeddings_fine = fine_model.encode(documents, convert_to_numpy=True)
+
+    dense = DenseRetriever(doc_embeddings_fine)
     bm25 = BM25Retriever(documents)
 
-    llm = Generator("Qwen/Qwen2.5-1.5B")
-    slm = Generator("Qwen/Qwen2.5-0.5B")
+    llm = Generator("Qwen/Qwen2.5-7B-Instruct")
+    slm = Generator("Qwen/Qwen2.5-0.5B-Instruct")
 
     results = []
 
     for query in queries:
         query_id = query["_id"]
         query_text = query["text"]
-        query_emb = embedder.encode([query_text])[0]
 
-        # --- Retrieval ---
+        query_emb = fine_model.encode(
+            [query_text],
+            convert_to_numpy=True
+        )[0]
+
         dense_ids, _ = dense.search(query_emb, k=3)
-        bm25_ids = [doc_id for doc_id, _ in bm25.search(query_text, k=3)]
+        
+        if retrieval_method == "hybrid_rrf":
+            bm25_ids = [doc_id for doc_id, _ in bm25.search(query_text, k=3)]
 
-        if best_retrieval == "hybrid":
             hybrid = rrf([dense_ids, bm25_ids])
+
             doc_ids = [doc_id for doc_id, _ in hybrid][:3]
+
+        elif retrieval_method == "dense":
+            doc_ids = dense_ids[:3]
+
         else:
-            doc_ids = dense_ids
+            raise ValueError(f"Unknown retrieval_method: {retrieval_method}") 
 
         context_docs = [documents[i] for i in doc_ids]
         context_text = " ".join(context_docs)
 
-        # --- Ground Truth ---
-        if query_id not in cache:
-            cache[query_id] = {}
+        # --- Cache-Struktur ---
+        if query_id not in cache_answers:
+            cache_answers[query_id] = {}
 
-        if "ground_truth" not in cache[query_id]:
-            cache[query_id]["ground_truth"] = Generator.generate_ground_truth(query_text)
+        if "ground_truth" not in cache_answers[query_id]:
+            cache_answers[query_id]["ground_truth"] = {}
 
-        ground_truth = cache[query_id]["ground_truth"]
+        if "with_context" not in cache_answers[query_id]:
+            cache_answers[query_id]["with_context"] = {}
 
-        # --- Antworten ---
-        key = query_id + "||" + context_text
-        if key not in cache:
-            cache[key] = {}
+        if "without_context" not in cache_answers[query_id]:
+            cache_answers[query_id]["without_context"] = {}
 
-        if "llm_answer" not in cache[key]:
-            cache[key]["llm_answer"] = llm.generate(query_text, context_text)
-        answer_llm = cache[key]["llm_answer"]
-        
-        if "slm_answer" not in cache[key]:
-            cache[key]["slm_answer"] = slm.generate(query_text, context_text)
-        answer_slm = cache[key]["slm_answer"]
+        context_key = context_text
 
-        save_json(cache, CACHE_PATH)
+        # --- Ground Truth für genau diesen Kontext ---
+        if context_key not in cache_answers[query_id]["ground_truth"]:
+            cache_answers[query_id]["ground_truth"][context_key] = Generator.generate_ground_truth(
+                query_text,
+                context_text
+            )
+            
+        ground_truth = cache_answers[query_id]["ground_truth"][context_key]
+
+        # --- Antworten MIT Kontext ---
+        if context_key not in cache_answers[query_id]["with_context"]:
+            cache_answers[query_id]["with_context"][context_key] = {}
+
+        with_context_cache = cache_answers[query_id]["with_context"][context_key]
+
+        if "llm_answer" not in with_context_cache:
+            with_context_cache["llm_answer"] = llm.generate_with_context(
+                query_text,
+                context_text
+            )
+
+        if "slm_answer" not in with_context_cache:
+            with_context_cache["slm_answer"] = slm.generate_with_context(
+                query_text,
+                context_text
+            )
+
+        answer_llm_with_context = with_context_cache["llm_answer"]
+        answer_slm_with_context = with_context_cache["slm_answer"]
+
+        # --- Antworten OHNE Kontext ---
+        without_context_cache = cache_answers[query_id]["without_context"]
+
+        if "llm_answer" not in without_context_cache:
+            without_context_cache["llm_answer"] = llm.generate_without_context(
+                query_text
+            )
+
+        if "slm_answer" not in without_context_cache:
+            without_context_cache["slm_answer"] = slm.generate_without_context(
+                query_text
+            )
+
+        answer_llm_without_context = without_context_cache["llm_answer"]
+        answer_slm_without_context = without_context_cache["slm_answer"]
+
+        save_json(cache_answers, CACHE_PATH)
 
         # --- ROUGE ---
-        r1_llm, rL_llm = compute_rouge(answer_llm, ground_truth)
-        r1_slm, rL_slm = compute_rouge(answer_slm, ground_truth)
+        r1_llm_with, rL_llm_with = compute_rouge(
+            answer_llm_with_context,
+            ground_truth
+        )
+        r1_slm_with, rL_slm_with = compute_rouge(
+            answer_slm_with_context,
+            ground_truth
+        )
+
+        r1_llm_without, rL_llm_without = compute_rouge(
+            answer_llm_without_context,
+            ground_truth
+        )
+        r1_slm_without, rL_slm_without = compute_rouge(
+            answer_slm_without_context,
+            ground_truth
+        )
 
         results.append({
             "query": query_text,
-            "llm_rouge1": r1_llm,
-            "llm_rougeL": rL_llm,
-            "slm_rouge1": r1_slm,
-            "slm_rougeL": rL_slm
+
+            "llm_with_context_rouge1": r1_llm_with,
+            "llm_with_context_rougeL": rL_llm_with,
+            "slm_with_context_rouge1": r1_slm_with,
+            "slm_with_context_rougeL": rL_slm_with,
+
+            "llm_without_context_rouge1": r1_llm_without,
+            "llm_without_context_rougeL": rL_llm_without,
+            "slm_without_context_rouge1": r1_slm_without,
+            "slm_without_context_rougeL": rL_slm_without,
         })
 
-        print(f"\nQuery: {query_text}")
-        print("Ground Truth:", ground_truth)
+    # --- Average Scores ---
+    avg = {
+        "llm_with_context_rouge1": sum(r["llm_with_context_rouge1"] for r in results) / len(results),
+        "llm_with_context_rougeL": sum(r["llm_with_context_rougeL"] for r in results) / len(results),
+        "slm_with_context_rouge1": sum(r["slm_with_context_rouge1"] for r in results) / len(results),
+        "slm_with_context_rougeL": sum(r["slm_with_context_rougeL"] for r in results) / len(results),
 
-        print("\nLLM answer:", answer_llm)
-        print(f"LLM ROUGE-1: {r1_llm:.3f}, ROUGE-L: {rL_llm:.3f}")
+        "llm_without_context_rouge1": sum(r["llm_without_context_rouge1"] for r in results) / len(results),
+        "llm_without_context_rougeL": sum(r["llm_without_context_rougeL"] for r in results) / len(results),
+        "slm_without_context_rouge1": sum(r["slm_without_context_rouge1"] for r in results) / len(results),
+        "slm_without_context_rougeL": sum(r["slm_without_context_rougeL"] for r in results) / len(results),
+    }
 
-        print("\nSLM answer:", answer_slm)
-        print(f"SLM ROUGE-1: {r1_slm:.3f}, ROUGE-L: {rL_slm:.3f}")
+    print("\n==============================")
+    print("SLM vs. LLM RESULTS")
+    print("==============================")
 
-    return results
+    print(
+        f"LLM without context: "
+        f"ROUGE-1={avg['llm_without_context_rouge1']:.3f}, "
+        f"ROUGE-L={avg['llm_without_context_rougeL']:.3f}"
+    )
+
+    print(
+        f"SLM without context: "
+        f"ROUGE-1={avg['slm_without_context_rouge1']:.3f}, "
+        f"ROUGE-L={avg['slm_without_context_rougeL']:.3f}"
+    )
+
+    print(
+        f"LLM with context: "
+        f"ROUGE-1={avg['llm_with_context_rouge1']:.3f}, "
+        f"ROUGE-L={avg['llm_with_context_rougeL']:.3f}"
+    )
+
+    print(
+        f"SLM with context: "
+        f"ROUGE-1={avg['slm_with_context_rouge1']:.3f}, "
+        f"ROUGE-L={avg['slm_with_context_rougeL']:.3f}"
+    )
+
+    return {
+        "results": results,
+        "averages": avg
+    }

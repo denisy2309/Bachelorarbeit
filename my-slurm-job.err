@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/homes/deyilmaz/Bachelorarbeit/main.py", line 19, in <module>
+    from experiments.slm_llm_experiment import run_slm_llm_experiment
+ModuleNotFoundError: No module named 'experiments.slm_llm_experiment'

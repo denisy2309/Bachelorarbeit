@@ -1,1 +1,4 @@
 .env
+checkpoints
+venv
+wandb

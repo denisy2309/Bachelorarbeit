@@ -1,7 +1,12 @@
-def build_qrels_map(qrels, doc_id_map):
+def build_qrels_map(qrels, doc_id_map, min_score):
     qrels_map = {}
 
     for row in qrels:
+        score = int(row["score"])
+
+        if score < min_score:
+            continue
+
         qid = row["query-id"]
         doc_id = row["corpus-id"]
 
