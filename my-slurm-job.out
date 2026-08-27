@@ -1,3 +1,291 @@
-Process 0 of Job 240828 with the local id 0 using gpu id 0 (we may use gpu: 0 on worker-1.GPU.CIT-EC.NET)
+Process 0 of Job 240832 with the local id 0 using gpu id 0 (we may use gpu: 0 on worker-1.GPU.CIT-EC.NET)
 computing on NVIDIA A40
+
+==============================
+RUNNING TREC-COVID
+==============================
+
+===== TREC-COVID Fold 1 =====
+{'loss': '0.03765', 'grad_norm': '0.2082', 'learning_rate': '9.677e-06', 'epoch': '0.04931'}
+{'loss': '0.02157', 'grad_norm': '0.1056', 'learning_rate': '1.952e-05', 'epoch': '0.09863'}
+{'loss': '0.01851', 'grad_norm': '0.1056', 'learning_rate': '1.896e-05', 'epoch': '0.1479'}
+{'loss': '0.01851', 'grad_norm': '0.1791', 'learning_rate': '1.786e-05', 'epoch': '0.1973'}
+{'loss': '0.01755', 'grad_norm': '0.1261', 'learning_rate': '1.677e-05', 'epoch': '0.2466'}
+{'loss': '0.01596', 'grad_norm': '0.1648', 'learning_rate': '1.567e-05', 'epoch': '0.2959'}
+{'loss': '0.01646', 'grad_norm': '0.1206', 'learning_rate': '1.457e-05', 'epoch': '0.3452'}
+{'loss': '0.01567', 'grad_norm': '0.1126', 'learning_rate': '1.348e-05', 'epoch': '0.3945'}
+{'loss': '0.0159', 'grad_norm': '0.1573', 'learning_rate': '1.238e-05', 'epoch': '0.4438'}
+{'loss': '0.01646', 'grad_norm': '0.1404', 'learning_rate': '1.128e-05', 'epoch': '0.4931'}
+{'loss': '0.01553', 'grad_norm': '0.1077', 'learning_rate': '1.019e-05', 'epoch': '0.5424'}
+{'loss': '0.01535', 'grad_norm': '0.1041', 'learning_rate': '9.093e-06', 'epoch': '0.5918'}
+{'loss': '0.01474', 'grad_norm': '0.1141', 'learning_rate': '7.996e-06', 'epoch': '0.6411'}
+{'loss': '0.01499', 'grad_norm': '0.1783', 'learning_rate': '6.9e-06', 'epoch': '0.6904'}
+{'loss': '0.01503', 'grad_norm': '0.1336', 'learning_rate': '5.804e-06', 'epoch': '0.7397'}
+{'loss': '0.01551', 'grad_norm': '0.1733', 'learning_rate': '4.708e-06', 'epoch': '0.789'}
+{'loss': '0.01529', 'grad_norm': '0.1218', 'learning_rate': '3.612e-06', 'epoch': '0.8383'}
+{'loss': '0.01456', 'grad_norm': '0.09821', 'learning_rate': '2.516e-06', 'epoch': '0.8876'}
+{'loss': '0.01464', 'grad_norm': '0.1077', 'learning_rate': '1.42e-06', 'epoch': '0.9369'}
+{'loss': '0.01466', 'grad_norm': '0.1418', 'learning_rate': '3.235e-07', 'epoch': '0.9863'}
+{'train_runtime': '169.6', 'train_samples_per_second': '233.2', 'train_steps_per_second': '7.293', 'train_loss': '0.0172', 'epoch': '1'}
+
+===== Evaluation: TREC-COVID Fold 1 =====
+
+--- TREC-COVID Fold 1 Results ---
+Dense_Pre-trained: Precision@50=0.432, Recall@50=0.094, MAP=0.059
+Dense_Fine-tuned: Precision@50=0.462, Recall@50=0.099, MAP=0.071
+BM25: Precision@50=0.254, Recall@50=0.043, MAP=0.028
+RRF_Hybrid_Pre-trained: Precision@50=0.410, Recall@50=0.091, MAP=0.070
+RRF_Hybrid_Fine-tuned: Precision@50=0.408, Recall@50=0.088, MAP=0.076
+FixedWeighted_Hybrid_Pre-trained: Precision@50=0.408, Recall@50=0.087, MAP=0.063
+FixedWeighted_Hybrid_Fine-tuned: Precision@50=0.432, Recall@50=0.090, MAP=0.067
+MaxScore_Hybrid_Pre-trained: Precision@50=0.394, Recall@50=0.082, MAP=0.058
+MaxScore_Hybrid_Fine-tuned: Precision@50=0.418, Recall@50=0.087, MAP=0.064
+DAT_Hybrid_Pre-trained: Precision@50=0.408, Recall@50=0.087, MAP=0.063
+DAT_Hybrid_Fine-tuned: Precision@50=0.432, Recall@50=0.090, MAP=0.067
+
+===== TREC-COVID Fold 2 =====
+{'loss': '0.03743', 'grad_norm': '0.2163', 'learning_rate': '9.752e-06', 'epoch': '0.04975'}
+{'loss': '0.02116', 'grad_norm': '0.1847', 'learning_rate': '1.967e-05', 'epoch': '0.0995'}
+{'loss': '0.01842', 'grad_norm': '0.09744', 'learning_rate': '1.893e-05', 'epoch': '0.1493'}
+{'loss': '0.01805', 'grad_norm': '0.1146', 'learning_rate': '1.782e-05', 'epoch': '0.199'}
+{'loss': '0.01688', 'grad_norm': '0.1975', 'learning_rate': '1.672e-05', 'epoch': '0.2488'}
+{'loss': '0.01608', 'grad_norm': '0.09593', 'learning_rate': '1.561e-05', 'epoch': '0.2985'}
+{'loss': '0.01703', 'grad_norm': '0.1246', 'learning_rate': '1.451e-05', 'epoch': '0.3483'}
+{'loss': '0.01588', 'grad_norm': '0.1312', 'learning_rate': '1.34e-05', 'epoch': '0.398'}
+{'loss': '0.01621', 'grad_norm': '0.1548', 'learning_rate': '1.229e-05', 'epoch': '0.4478'}
+{'loss': '0.0154', 'grad_norm': '0.1147', 'learning_rate': '1.119e-05', 'epoch': '0.4975'}
+{'loss': '0.01545', 'grad_norm': '0.1569', 'learning_rate': '1.008e-05', 'epoch': '0.5473'}
+{'loss': '0.01529', 'grad_norm': '0.1327', 'learning_rate': '8.977e-06', 'epoch': '0.597'}
+{'loss': '0.01496', 'grad_norm': '0.17', 'learning_rate': '7.871e-06', 'epoch': '0.6468'}
+{'loss': '0.01621', 'grad_norm': '0.1109', 'learning_rate': '6.765e-06', 'epoch': '0.6965'}
+{'loss': '0.01468', 'grad_norm': '0.1457', 'learning_rate': '5.659e-06', 'epoch': '0.7463'}
+{'loss': '0.01483', 'grad_norm': '0.1036', 'learning_rate': '4.553e-06', 'epoch': '0.796'}
+{'loss': '0.01499', 'grad_norm': '0.1261', 'learning_rate': '3.447e-06', 'epoch': '0.8458'}
+{'loss': '0.01458', 'grad_norm': '0.112', 'learning_rate': '2.341e-06', 'epoch': '0.8955'}
+{'loss': '0.01514', 'grad_norm': '0.07224', 'learning_rate': '1.235e-06', 'epoch': '0.9453'}
+{'loss': '0.0147', 'grad_norm': '0.128', 'learning_rate': '1.29e-07', 'epoch': '0.995'}
+{'train_runtime': '166.6', 'train_samples_per_second': '231.6', 'train_steps_per_second': '7.238', 'train_loss': '0.01715', 'epoch': '1'}
+
+===== Evaluation: TREC-COVID Fold 2 =====
+
+--- TREC-COVID Fold 2 Results ---
+Dense_Pre-trained: Precision@50=0.424, Recall@50=0.084, MAP=0.059
+Dense_Fine-tuned: Precision@50=0.498, Recall@50=0.094, MAP=0.072
+BM25: Precision@50=0.274, Recall@50=0.051, MAP=0.027
+RRF_Hybrid_Pre-trained: Precision@50=0.368, Recall@50=0.073, MAP=0.063
+RRF_Hybrid_Fine-tuned: Precision@50=0.410, Recall@50=0.076, MAP=0.073
+FixedWeighted_Hybrid_Pre-trained: Precision@50=0.402, Recall@50=0.079, MAP=0.057
+FixedWeighted_Hybrid_Fine-tuned: Precision@50=0.470, Recall@50=0.086, MAP=0.069
+MaxScore_Hybrid_Pre-trained: Precision@50=0.376, Recall@50=0.071, MAP=0.052
+MaxScore_Hybrid_Fine-tuned: Precision@50=0.434, Recall@50=0.079, MAP=0.065
+DAT_Hybrid_Pre-trained: Precision@50=0.402, Recall@50=0.079, MAP=0.057
+DAT_Hybrid_Fine-tuned: Precision@50=0.470, Recall@50=0.086, MAP=0.069
+
+===== TREC-COVID Fold 3 =====
+{'loss': '0.03704', 'grad_norm': '0.2245', 'learning_rate': '9.752e-06', 'epoch': '0.04992'}
+{'loss': '0.02148', 'grad_norm': '0.1218', 'learning_rate': '1.967e-05', 'epoch': '0.09983'}
+{'loss': '0.01919', 'grad_norm': '0.1085', 'learning_rate': '1.893e-05', 'epoch': '0.1498'}
+{'loss': '0.01758', 'grad_norm': '0.1058', 'learning_rate': '1.782e-05', 'epoch': '0.1997'}
+{'loss': '0.01659', 'grad_norm': '0.1331', 'learning_rate': '1.671e-05', 'epoch': '0.2496'}
+{'loss': '0.01668', 'grad_norm': '0.1195', 'learning_rate': '1.56e-05', 'epoch': '0.2995'}
+{'loss': '0.01565', 'grad_norm': '0.1381', 'learning_rate': '1.449e-05', 'epoch': '0.3494'}
+{'loss': '0.01592', 'grad_norm': '0.1303', 'learning_rate': '1.338e-05', 'epoch': '0.3993'}
+{'loss': '0.01618', 'grad_norm': '0.1173', 'learning_rate': '1.227e-05', 'epoch': '0.4493'}
+{'loss': '0.01623', 'grad_norm': '0.1315', 'learning_rate': '1.116e-05', 'epoch': '0.4992'}
+{'loss': '0.01494', 'grad_norm': '0.1135', 'learning_rate': '1.005e-05', 'epoch': '0.5491'}
+{'loss': '0.01567', 'grad_norm': '0.1341', 'learning_rate': '8.936e-06', 'epoch': '0.599'}
+{'loss': '0.01595', 'grad_norm': '0.1754', 'learning_rate': '7.826e-06', 'epoch': '0.6489'}
+{'loss': '0.01547', 'grad_norm': '0.2273', 'learning_rate': '6.716e-06', 'epoch': '0.6988'}
+{'loss': '0.01515', 'grad_norm': '0.1098', 'learning_rate': '5.606e-06', 'epoch': '0.7488'}
+{'loss': '0.01494', 'grad_norm': '0.1288', 'learning_rate': '4.496e-06', 'epoch': '0.7987'}
+{'loss': '0.01576', 'grad_norm': '0.1819', 'learning_rate': '3.386e-06', 'epoch': '0.8486'}
+{'loss': '0.01427', 'grad_norm': '0.1426', 'learning_rate': '2.276e-06', 'epoch': '0.8985'}
+{'loss': '0.01461', 'grad_norm': '0.1286', 'learning_rate': '1.166e-06', 'epoch': '0.9484'}
+{'loss': '0.01511', 'grad_norm': '0.159', 'learning_rate': '5.55e-08', 'epoch': '0.9983'}
+{'train_runtime': '170.8', 'train_samples_per_second': '225.1', 'train_steps_per_second': '7.039', 'train_loss': '0.01721', 'epoch': '1'}
+
+===== Evaluation: TREC-COVID Fold 3 =====
+
+--- TREC-COVID Fold 3 Results ---
+Dense_Pre-trained: Precision@50=0.316, Recall@50=0.046, MAP=0.024
+Dense_Fine-tuned: Precision@50=0.344, Recall@50=0.051, MAP=0.024
+BM25: Precision@50=0.214, Recall@50=0.032, MAP=0.013
+RRF_Hybrid_Pre-trained: Precision@50=0.286, Recall@50=0.043, MAP=0.031
+RRF_Hybrid_Fine-tuned: Precision@50=0.304, Recall@50=0.045, MAP=0.032
+FixedWeighted_Hybrid_Pre-trained: Precision@50=0.312, Recall@50=0.046, MAP=0.031
+FixedWeighted_Hybrid_Fine-tuned: Precision@50=0.336, Recall@50=0.050, MAP=0.033
+MaxScore_Hybrid_Pre-trained: Precision@50=0.308, Recall@50=0.046, MAP=0.031
+MaxScore_Hybrid_Fine-tuned: Precision@50=0.324, Recall@50=0.048, MAP=0.032
+DAT_Hybrid_Pre-trained: Precision@50=0.312, Recall@50=0.046, MAP=0.031
+DAT_Hybrid_Fine-tuned: Precision@50=0.336, Recall@50=0.050, MAP=0.033
+
+===== TREC-COVID Fold 4 =====
+{'loss': '0.03833', 'grad_norm': '0.1445', 'learning_rate': '9.748e-06', 'epoch': '0.04971'}
+{'loss': '0.02091', 'grad_norm': '0.1401', 'learning_rate': '1.966e-05', 'epoch': '0.09941'}
+{'loss': '0.0192', 'grad_norm': '0.1416', 'learning_rate': '1.893e-05', 'epoch': '0.1491'}
+{'loss': '0.01837', 'grad_norm': '0.1099', 'learning_rate': '1.783e-05', 'epoch': '0.1988'}
+{'loss': '0.0176', 'grad_norm': '0.14', 'learning_rate': '1.672e-05', 'epoch': '0.2485'}
+{'loss': '0.01624', 'grad_norm': '0.1485', 'learning_rate': '1.562e-05', 'epoch': '0.2982'}
+{'loss': '0.01671', 'grad_norm': '0.1962', 'learning_rate': '1.451e-05', 'epoch': '0.3479'}
+{'loss': '0.0165', 'grad_norm': '0.1364', 'learning_rate': '1.341e-05', 'epoch': '0.3976'}
+{'loss': '0.01569', 'grad_norm': '0.1397', 'learning_rate': '1.23e-05', 'epoch': '0.4473'}
+{'loss': '0.01507', 'grad_norm': '0.1113', 'learning_rate': '1.12e-05', 'epoch': '0.4971'}
+{'loss': '0.01573', 'grad_norm': '0.155', 'learning_rate': '1.009e-05', 'epoch': '0.5468'}
+{'loss': '0.01508', 'grad_norm': '0.1282', 'learning_rate': '8.989e-06', 'epoch': '0.5965'}
+{'loss': '0.01495', 'grad_norm': '0.0992', 'learning_rate': '7.884e-06', 'epoch': '0.6462'}
+{'loss': '0.01498', 'grad_norm': '0.126', 'learning_rate': '6.779e-06', 'epoch': '0.6959'}
+{'loss': '0.01553', 'grad_norm': '0.1395', 'learning_rate': '5.674e-06', 'epoch': '0.7456'}
+{'loss': '0.01469', 'grad_norm': '0.1682', 'learning_rate': '4.569e-06', 'epoch': '0.7953'}
+{'loss': '0.01475', 'grad_norm': '0.1213', 'learning_rate': '3.464e-06', 'epoch': '0.845'}
+{'loss': '0.01468', 'grad_norm': '0.1207', 'learning_rate': '2.36e-06', 'epoch': '0.8947'}
+{'loss': '0.01469', 'grad_norm': '0.09724', 'learning_rate': '1.255e-06', 'epoch': '0.9444'}
+{'loss': '0.01455', 'grad_norm': '0.1302', 'learning_rate': '1.498e-07', 'epoch': '0.9941'}
+{'train_runtime': '162.9', 'train_samples_per_second': '233.1', 'train_steps_per_second': '7.287', 'train_loss': '0.0172', 'epoch': '1'}
+
+===== Evaluation: TREC-COVID Fold 4 =====
+
+--- TREC-COVID Fold 4 Results ---
+Dense_Pre-trained: Precision@50=0.580, Recall@50=0.111, MAP=0.083
+Dense_Fine-tuned: Precision@50=0.614, Recall@50=0.117, MAP=0.092
+BM25: Precision@50=0.322, Recall@50=0.062, MAP=0.042
+RRF_Hybrid_Pre-trained: Precision@50=0.480, Recall@50=0.092, MAP=0.098
+RRF_Hybrid_Fine-tuned: Precision@50=0.512, Recall@50=0.100, MAP=0.108
+FixedWeighted_Hybrid_Pre-trained: Precision@50=0.556, Recall@50=0.106, MAP=0.100
+FixedWeighted_Hybrid_Fine-tuned: Precision@50=0.582, Recall@50=0.111, MAP=0.111
+MaxScore_Hybrid_Pre-trained: Precision@50=0.518, Recall@50=0.099, MAP=0.093
+MaxScore_Hybrid_Fine-tuned: Precision@50=0.560, Recall@50=0.107, MAP=0.105
+DAT_Hybrid_Pre-trained: Precision@50=0.556, Recall@50=0.106, MAP=0.100
+DAT_Hybrid_Fine-tuned: Precision@50=0.582, Recall@50=0.111, MAP=0.111
+
+===== TREC-COVID Fold 5 =====
+{'loss': '0.03973', 'grad_norm': '0.1828', 'learning_rate': '9.756e-06', 'epoch': '0.04963'}
+{'loss': '0.02068', 'grad_norm': '0.1446', 'learning_rate': '1.967e-05', 'epoch': '0.09927'}
+{'loss': '0.01833', 'grad_norm': '0.1419', 'learning_rate': '1.893e-05', 'epoch': '0.1489'}
+{'loss': '0.0184', 'grad_norm': '0.1559', 'learning_rate': '1.783e-05', 'epoch': '0.1985'}
+{'loss': '0.01656', 'grad_norm': '0.1652', 'learning_rate': '1.673e-05', 'epoch': '0.2482'}
+{'loss': '0.01631', 'grad_norm': '0.1174', 'learning_rate': '1.562e-05', 'epoch': '0.2978'}
+{'loss': '0.0161', 'grad_norm': '0.1163', 'learning_rate': '1.452e-05', 'epoch': '0.3474'}
+{'loss': '0.01595', 'grad_norm': '0.1125', 'learning_rate': '1.342e-05', 'epoch': '0.3971'}
+{'loss': '0.01608', 'grad_norm': '0.1373', 'learning_rate': '1.231e-05', 'epoch': '0.4467'}
+{'loss': '0.01525', 'grad_norm': '0.1259', 'learning_rate': '1.121e-05', 'epoch': '0.4963'}
+{'loss': '0.01615', 'grad_norm': '0.167', 'learning_rate': '1.011e-05', 'epoch': '0.546'}
+{'loss': '0.01553', 'grad_norm': '0.1187', 'learning_rate': '9.005e-06', 'epoch': '0.5956'}
+{'loss': '0.01647', 'grad_norm': '0.1188', 'learning_rate': '7.902e-06', 'epoch': '0.6452'}
+{'loss': '0.01504', 'grad_norm': '0.1176', 'learning_rate': '6.799e-06', 'epoch': '0.6949'}
+{'loss': '0.01494', 'grad_norm': '0.1043', 'learning_rate': '5.696e-06', 'epoch': '0.7445'}
+{'loss': '0.01451', 'grad_norm': '0.1097', 'learning_rate': '4.593e-06', 'epoch': '0.7941'}
+{'loss': '0.01501', 'grad_norm': '0.08644', 'learning_rate': '3.49e-06', 'epoch': '0.8438'}
+{'loss': '0.01485', 'grad_norm': '0.1099', 'learning_rate': '2.387e-06', 'epoch': '0.8934'}
+{'loss': '0.0148', 'grad_norm': '0.1912', 'learning_rate': '1.284e-06', 'epoch': '0.943'}
+{'loss': '0.01501', 'grad_norm': '0.144', 'learning_rate': '1.808e-07', 'epoch': '0.9927'}
+{'train_runtime': '169.4', 'train_samples_per_second': '232.2', 'train_steps_per_second': '7.256', 'train_loss': '0.01726', 'epoch': '1'}
+
+===== Evaluation: TREC-COVID Fold 5 =====
+
+--- TREC-COVID Fold 5 Results ---
+Dense_Pre-trained: Precision@50=0.318, Recall@50=0.078, MAP=0.039
+Dense_Fine-tuned: Precision@50=0.432, Recall@50=0.104, MAP=0.067
+BM25: Precision@50=0.188, Recall@50=0.046, MAP=0.018
+RRF_Hybrid_Pre-trained: Precision@50=0.296, Recall@50=0.073, MAP=0.044
+RRF_Hybrid_Fine-tuned: Precision@50=0.354, Recall@50=0.087, MAP=0.062
+FixedWeighted_Hybrid_Pre-trained: Precision@50=0.310, Recall@50=0.071, MAP=0.032
+FixedWeighted_Hybrid_Fine-tuned: Precision@50=0.410, Recall@50=0.091, MAP=0.058
+MaxScore_Hybrid_Pre-trained: Precision@50=0.306, Recall@50=0.069, MAP=0.032
+MaxScore_Hybrid_Fine-tuned: Precision@50=0.392, Recall@50=0.085, MAP=0.054
+DAT_Hybrid_Pre-trained: Precision@50=0.310, Recall@50=0.071, MAP=0.031
+DAT_Hybrid_Fine-tuned: Precision@50=0.412, Recall@50=0.091, MAP=0.058
+
+===== FINAL CROSS-VALIDATION RESULTS =====
+Dense_Pre-trained: Precision@50=0.414, Recall@50=0.083, MAP=0.053
+Dense_Fine-tuned: Precision@50=0.470, Recall@50=0.093, MAP=0.065
+BM25: Precision@50=0.250, Recall@50=0.047, MAP=0.026
+RRF_Hybrid_Pre-trained: Precision@50=0.368, Recall@50=0.074, MAP=0.061
+RRF_Hybrid_Fine-tuned: Precision@50=0.398, Recall@50=0.079, MAP=0.070
+FixedWeighted_Hybrid_Pre-trained: Precision@50=0.398, Recall@50=0.078, MAP=0.057
+FixedWeighted_Hybrid_Fine-tuned: Precision@50=0.446, Recall@50=0.086, MAP=0.068
+MaxScore_Hybrid_Pre-trained: Precision@50=0.380, Recall@50=0.073, MAP=0.053
+MaxScore_Hybrid_Fine-tuned: Precision@50=0.426, Recall@50=0.081, MAP=0.064
+DAT_Hybrid_Pre-trained: Precision@50=0.398, Recall@50=0.078, MAP=0.057
+DAT_Hybrid_Fine-tuned: Precision@50=0.446, Recall@50=0.086, MAP=0.068
+
+===== TREC-COVID SLM vs LLM =====
+{'loss': '0.03663', 'grad_norm': '0.279', 'learning_rate': '9.692e-06', 'epoch': '0.04931'}
+{'loss': '0.02113', 'grad_norm': '0.1227', 'learning_rate': '1.954e-05', 'epoch': '0.09861'}
+{'loss': '0.01726', 'grad_norm': '0.1582', 'learning_rate': '1.896e-05', 'epoch': '0.1479'}
+{'loss': '0.01621', 'grad_norm': '0.1938', 'learning_rate': '1.786e-05', 'epoch': '0.1972'}
+{'loss': '0.01685', 'grad_norm': '0.1597', 'learning_rate': '1.676e-05', 'epoch': '0.2465'}
+{'loss': '0.01589', 'grad_norm': '0.1114', 'learning_rate': '1.567e-05', 'epoch': '0.2958'}
+{'loss': '0.01653', 'grad_norm': '0.1516', 'learning_rate': '1.457e-05', 'epoch': '0.3451'}
+{'loss': '0.0156', 'grad_norm': '0.1135', 'learning_rate': '1.348e-05', 'epoch': '0.3945'}
+{'loss': '0.01553', 'grad_norm': '0.1241', 'learning_rate': '1.238e-05', 'epoch': '0.4438'}
+{'loss': '0.01585', 'grad_norm': '0.1236', 'learning_rate': '1.128e-05', 'epoch': '0.4931'}
+{'loss': '0.01529', 'grad_norm': '0.1357', 'learning_rate': '1.019e-05', 'epoch': '0.5424'}
+{'loss': '0.01518', 'grad_norm': '0.1008', 'learning_rate': '9.092e-06', 'epoch': '0.5917'}
+{'loss': '0.01467', 'grad_norm': '0.0837', 'learning_rate': '7.997e-06', 'epoch': '0.641'}
+{'loss': '0.01475', 'grad_norm': '0.1273', 'learning_rate': '6.901e-06', 'epoch': '0.6903'}
+{'loss': '0.01479', 'grad_norm': '0.1257', 'learning_rate': '5.805e-06', 'epoch': '0.7396'}
+{'loss': '0.01473', 'grad_norm': '0.1888', 'learning_rate': '4.709e-06', 'epoch': '0.7889'}
+{'loss': '0.01366', 'grad_norm': '0.1788', 'learning_rate': '3.613e-06', 'epoch': '0.8382'}
+{'loss': '0.01388', 'grad_norm': '0.1448', 'learning_rate': '2.517e-06', 'epoch': '0.8875'}
+{'loss': '0.01537', 'grad_norm': '0.1411', 'learning_rate': '1.421e-06', 'epoch': '0.9368'}
+{'loss': '0.01527', 'grad_norm': '0.1025', 'learning_rate': '3.253e-07', 'epoch': '0.9861'}
+{'train_runtime': '175.8', 'train_samples_per_second': '236.2', 'train_steps_per_second': '7.385', 'train_loss': '0.01673', 'epoch': '1'}
+
+==============================
+SLM vs. LLM RESULTS
+==============================
+LLM without context: ROUGE-1=0.307, ROUGE-L=0.197
+SLM without context: ROUGE-1=0.338, ROUGE-L=0.204
+LLM with context: ROUGE-1=0.565, ROUGE-L=0.434
+SLM with context: ROUGE-1=0.418, ROUGE-L=0.288
+
+==============================
+RUNNING NFCORPUS
+==============================
+{'loss': '1.894', 'grad_norm': '13.68', 'learning_rate': '9.993e-06', 'epoch': '0.15'}
+{'loss': '1.672', 'grad_norm': '10.99', 'learning_rate': '1.999e-05', 'epoch': '0.3'}
+{'loss': '1.569', 'grad_norm': '16.66', 'learning_rate': '1.889e-05', 'epoch': '0.4499'}
+{'loss': '1.486', 'grad_norm': '15.35', 'learning_rate': '1.778e-05', 'epoch': '0.5999'}
+{'loss': '1.402', 'grad_norm': '18.71', 'learning_rate': '1.667e-05', 'epoch': '0.7499'}
+{'loss': '1.354', 'grad_norm': '17.53', 'learning_rate': '1.556e-05', 'epoch': '0.8999'}
+{'loss': '1.27', 'grad_norm': '16.85', 'learning_rate': '1.445e-05', 'epoch': '1.05'}
+{'loss': '1.185', 'grad_norm': '14.84', 'learning_rate': '1.334e-05', 'epoch': '1.2'}
+{'loss': '1.177', 'grad_norm': '21.67', 'learning_rate': '1.222e-05', 'epoch': '1.35'}
+{'loss': '1.16', 'grad_norm': '25.81', 'learning_rate': '1.111e-05', 'epoch': '1.5'}
+{'loss': '1.123', 'grad_norm': '19.29', 'learning_rate': '1e-05', 'epoch': '1.65'}
+{'loss': '1.1', 'grad_norm': '18.98', 'learning_rate': '8.891e-06', 'epoch': '1.8'}
+{'loss': '1.101', 'grad_norm': '17.86', 'learning_rate': '7.78e-06', 'epoch': '1.95'}
+{'loss': '1.032', 'grad_norm': '25.3', 'learning_rate': '6.67e-06', 'epoch': '2.1'}
+{'loss': '0.9946', 'grad_norm': '22.34', 'learning_rate': '5.559e-06', 'epoch': '2.25'}
+{'loss': '1.002', 'grad_norm': '24.13', 'learning_rate': '4.448e-06', 'epoch': '2.4'}
+{'loss': '1.003', 'grad_norm': '22.43', 'learning_rate': '3.337e-06', 'epoch': '2.55'}
+{'loss': '0.9826', 'grad_norm': '23.84', 'learning_rate': '2.226e-06', 'epoch': '2.7'}
+{'loss': '0.9745', 'grad_norm': '15.63', 'learning_rate': '1.115e-06', 'epoch': '2.85'}
+{'loss': '0.9785', 'grad_norm': '22.75', 'learning_rate': '3.751e-09', 'epoch': '3'}
+{'train_runtime': '3196', 'train_samples_per_second': '103.8', 'train_steps_per_second': '12.98', 'train_loss': '1.223', 'epoch': '3'}
+
+===== Evaluation: NFCorpus Test =====
+
+--- NFCorpus Test Results ---
+Dense_Pre-trained: Precision@10=0.239, Recall@10=0.153, MAP=0.133
+Dense_Fine-tuned: Precision@10=0.290, Recall@10=0.161, MAP=0.182
+BM25: Precision@10=0.145, Recall@10=0.093, MAP=0.082
+RRF_Hybrid_Pre-trained: Precision@10=0.210, Recall@10=0.136, MAP=0.129
+RRF_Hybrid_Fine-tuned: Precision@10=0.249, Recall@10=0.151, MAP=0.155
+FixedWeighted_Hybrid_Pre-trained: Precision@10=0.087, Recall@10=0.029, MAP=0.039
+FixedWeighted_Hybrid_Fine-tuned: Precision@10=0.108, Recall@10=0.035, MAP=0.075
+MaxScore_Hybrid_Pre-trained: Precision@10=0.091, Recall@10=0.051, MAP=0.060
+MaxScore_Hybrid_Fine-tuned: Precision@10=0.118, Recall@10=0.060, MAP=0.087
+DAT_Hybrid_Pre-trained: Precision@10=0.080, Recall@10=0.028, MAP=0.037
+DAT_Hybrid_Fine-tuned: Precision@10=0.107, Recall@10=0.033, MAP=0.071
+
+===== NFCorpus SLM vs LLM =====
+
+==============================
+SLM vs. LLM RESULTS
+==============================
+LLM without context: ROUGE-1=0.220, ROUGE-L=0.152
+SLM without context: ROUGE-1=0.225, ROUGE-L=0.141
+LLM with context: ROUGE-1=0.524, ROUGE-L=0.416
+SLM with context: ROUGE-1=0.304, ROUGE-L=0.206
 done
